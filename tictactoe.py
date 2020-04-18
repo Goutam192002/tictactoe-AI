@@ -2,6 +2,7 @@
 Tic Tac Toe Player
 """
 import copy
+import random
 
 X = "X"
 O = "O"
@@ -104,6 +105,7 @@ def minimax(board):
     Returns the optimal action for the current player on the board.
     """
     possible_moves = actions(board)
+    random.shuffle(possible_moves)
     best_move = None
     fronteir = []
     best_value = 0
@@ -132,6 +134,7 @@ def maxvalue(board):
         return utility(board)
     else:
         possible_moves = actions(board)
+        random.shuffle(possible_moves)
         for move in possible_moves:
             resulting_board = result(board, move)
             resulting_value = minvalue(resulting_board)
@@ -146,6 +149,7 @@ def minvalue(board):
         return utility(board)
     else:
         possible_moves = actions(board)
+        random.shuffle(possible_moves)
         for move in possible_moves:
             resulting_board = result(board, move)
             resulting_value = maxvalue(resulting_board)
