@@ -113,7 +113,10 @@ def minimax(board):
         if terminal(resulting_board) and utility(board) >= -1:
             return best_move
         else:
-            fronteir.append((move, minvalue(resulting_board)))
+            if player(board) == X:
+                fronteir.append((move, minvalue(resulting_board)))
+            else:
+                fronteir.append((move, maxvalue(resulting_board)))
     for node in fronteir:
         if player(board) == X:
             if node[1] >= best_value:
